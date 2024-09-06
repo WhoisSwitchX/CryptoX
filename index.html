@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoX - Blockchain Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="logo">CryptoX</div>
+        <nav>
+            <ul>
+                <li><a href="#hash-section">Hash</a></li>
+                <li><a href="#block-section">Block</a></li>
+                <li><a href="#blockchain-section">Blockchain</a></li>
+                <li><a href="#tokens-section">Tokens</a></li>
+                <li><a href="#coinbase-section">Coinbase Transaction</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <!-- Hash Section -->
+    <section id="hash-section">
+        <h2>Hash Generator</h2>
+        <p>Enter some text below to generate its SHA-256 hash:</p>
+        <input type="text" id="hash-input" placeholder="Enter text">
+        <button onclick="generateHash()">Generate Hash</button>
+        <p>Hash: <span id="hash-output"></span></p>
+    </section>
+
+    <!-- Block Section -->
+    <section id="block-section">
+        <h2>Block Information</h2>
+        <p>Here is an example of a block in a blockchain:</p>
+        <div class="block">
+            <p>Block Number: <span id="block-number">1</span></p>
+            <p>Nonce: <span id="nonce">12345</span></p>
+            <p>Data: <span id="data">Some transaction data</span></p>
+            <p>Previous Hash: <span id="previous-hash">0000000000000000</span></p>
+            <p>Hash: <span id="block-hash">0a1b2c3d4e5f6789</span></p>
+        </div>
+    </section>
+
+    <!-- Blockchain Section -->
+    <section id="blockchain-section">
+        <h2>Blockchain</h2>
+        <p>A blockchain is a series of blocks linked together:</p>
+        <div class="blockchain">
+            <div class="block">
+                <p>Block: 1</p>
+                <p>Nonce: 12345</p>
+                <p>Data: Transaction 1</p>
+                <p>Previous Hash: 0000000000000000</p>
+                <p>Hash: 0a1b2c3d4e5f6789</p>
+            </div>
+            <div class="block">
+                <p>Block: 2</p>
+                <p>Nonce: 67890</p>
+                <p>Data: Transaction 2</p>
+                <p>Previous Hash: 0a1b2c3d4e5f6789</p>
+                <p>Hash: 1b2c3d4e5f67890a</p>
+            </div>
+            <!-- Add more blocks here as needed -->
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
