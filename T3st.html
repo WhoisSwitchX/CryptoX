@@ -1,0 +1,36 @@
+<div class="container">
+      <div class="operation">
+        <h3>Derive Address from Private Key</h3>
+        <label for="privateKey">Enter Private Key:</label>
+        <input type="text" id="privateKey" name="privateKey" />
+        <button id="deriveAddressBtn" onclick="deriveAddressFromPrivateKey()">
+          Generate Ethereum Address
+        </button>
+        <div id="message"></div>
+
+        <div class="result-container" id="result">
+          <ul class="result-list">
+            <li class="result-item">
+              <strong class="result-label">Address:</strong>
+              <span class="result-value" id="addressDisplay"></span>
+            </li>
+            <li class="result-item">
+              <strong class="result-label">Private Key:</strong>
+              <span class="result-value" id="privateKeyDisplay"></span>
+            </li>
+          </ul>
+        </div>
+        <a id="etherscanLink" href="#" target="_blank" style="display: none">
+          View on Etherscan
+        </a>
+      </div>
+      <div class="operation">
+        <h3>Generate Random Private Key & Address</h3>
+        <button
+          id="generateRandomBtn"
+          onclick="generateRandomPrivateKeyAndAddress()"
+        >
+          Generate Random Pair
+        </button>
+      </div>
+    </div>
