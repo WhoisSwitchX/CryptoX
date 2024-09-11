@@ -1,59 +1,70 @@
-// Import Ethers.js
-// Ensure Ethers.js script is included in the HTML
-// <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.0/dist/ethers.umd.min.js"></script>
-
-async function deriveAddressFromPrivateKey() {
-    const privateKey = document.getElementById('privateKey').value;
-
-    try {
-        // Derive Ethereum address from private key using ethers.js
-        const wallet = new ethers.Wallet(privateKey);
-        document.getElementById('addressDisplay').innerText = wallet.address;
-        document.getElementById('privateKeyDisplay').innerText = privateKey;
-
-        // Set Etherscan link
-        const etherscanLink = `https://etherscan.io/address/${wallet.address}`;
-        document.getElementById('etherscanLink').href = etherscanLink;
-        document.getElementById('etherscanLink').style.display = 'inline';
-
-        // Fetch balance
-        await fetchBalance(wallet.address, 'balanceDisplay');
-    } catch (error) {
-        document.getElementById('message').innerText = 'Invalid Private Key!';
-        console.error(error);
-    }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+    color: #333;
 }
 
-async function generateRandomPrivateKeyAndAddress() {
-    // Generate random wallet using ethers.js
-    const randomWallet = ethers.Wallet.createRandom();
-
-    // Display generated address and private key
-    document.getElementById('randomAddressDisplay').innerText = randomWallet.address;
-    document.getElementById('randomPrivateKeyDisplay').innerText = randomWallet.privateKey;
-
-    // Set Etherscan link
-    const randomEtherscanLink = `https://etherscan.io/address/${randomWallet.address}`;
-    document.getElementById('randomEtherscanLink').href = randomEtherscanLink;
-    document.getElementById('randomEtherscanLink').style.display = 'inline';
-
-    // Fetch balance
-    await fetchBalance(randomWallet.address, 'randomBalanceDisplay');
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-// Fetch Ethereum balance using ethers.js
-async function fetchBalance(address, displayElementId) {
-    try {
-        // Connect to Ethereum mainnet via Ethers.js default provider
-        const provider = new ethers.providers.getDefaultProvider('mainnet');
+.operation {
+    margin-bottom: 30px;
+}
 
-        // Fetch the balance in wei and convert it to Ether
-        const balance = await provider.getBalance(address);
-        const balanceInEth = ethers.utils.formatEther(balance);
+h3 {
+    color: #007bff;
+}
 
-        document.getElementById(displayElementId).innerText = `${balanceInEth} ETH`;
-    } catch (error) {
-        console.error('Error fetching balance:', error);
-        document.getElementById(displayElementId).innerText = 'Error fetching balance';
-    }
+input {
+    width: calc(100% - 12px);
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.result-container {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.result-list {
+    list-style: none;
+    padding: 0;
+}
+
+.result-item {
+    margin: 5px 0;
+}
+
+.result-label {
+    font-weight: bold;
+}
+
+.result-value {
+    margin-left: 10px;
 }
