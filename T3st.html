@@ -1,70 +1,69 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 20px;
-    color: #333;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethereum Wallet Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.0/dist/ethers.umd.min.js"></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Operation 1: Derive Ethereum Address from Private Key -->
+        <div class="operation">
+            <h3>Derive Address from Private Key</h3>
+            <label for="privateKey">Enter Private Key:</label>
+            <input type="text" id="privateKey" name="privateKey" />
+            <button id="deriveAddressBtn" onclick="deriveAddressFromPrivateKey()">
+                Generate Ethereum Address
+            </button>
+            <div id="message"></div>
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+            <div class="result-container" id="result">
+                <ul class="result-list">
+                    <li class="result-item">
+                        <strong class="result-label">Address:</strong>
+                        <span class="result-value" id="addressDisplay"></span>
+                    </li>
+                    <li class="result-item">
+                        <strong class="result-label">Private Key:</strong>
+                        <span class="result-value" id="privateKeyDisplay"></span>
+                    </li>
+                    <li class="result-item">
+                        <strong class="result-label">Balance:</strong>
+                        <span class="result-value" id="balanceDisplay">-</span>
+                    </li>
+                </ul>
+            </div>
+            <a id="etherscanLink" href="#" target="_blank" style="display: none">View on Etherscan</a>
+        </div>
 
-.operation {
-    margin-bottom: 30px;
-}
+        <!-- Operation 2: Generate Random Ethereum Wallet -->
+        <div class="operation">
+            <h3>Generate Random Private Key & Address</h3>
+            <button id="generateRandomBtn" onclick="generateRandomPrivateKeyAndAddress()">
+                Generate Random Pair
+            </button>
 
-h3 {
-    color: #007bff;
-}
-
-input {
-    width: calc(100% - 12px);
-    padding: 8px;
-    margin: 10px 0;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-.result-container {
-    background-color: #f9f9f9;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.result-list {
-    list-style: none;
-    padding: 0;
-}
-
-.result-item {
-    margin: 5px 0;
-}
-
-.result-label {
-    font-weight: bold;
-}
-
-.result-value {
-    margin-left: 10px;
-}
+            <div class="result-container" id="randomResult">
+                <ul class="result-list">
+                    <li class="result-item">
+                        <strong class="result-label">Random Address:</strong>
+                        <span class="result-value" id="randomAddressDisplay"></span>
+                    </li>
+                    <li class="result-item">
+                        <strong class="result-label">Random Private Key:</strong>
+                        <span class="result-value" id="randomPrivateKeyDisplay"></span>
+                    </li>
+                    <li class="result-item">
+                        <strong class="result-label">Balance:</strong>
+                        <span class="result-value" id="randomBalanceDisplay">-</span>
+                    </li>
+                </ul>
+            </div>
+            <a id="randomEtherscanLink" href="#" target="_blank" style="display: none">View on Etherscan</a>
+        </div>
+    </div>
+</body>
+</html>
